@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
-    required this.emailController,
+    required this.controller,
     required this.labelText,
     required this.height,
     required this.width,
     this.obscureText = false,
   }) : super(key: key);
 
-  final TextEditingController emailController;
+  final TextEditingController controller;
   final String labelText;
   final double height;
   final double width;
@@ -22,7 +22,7 @@ class CustomTextField extends StatelessWidget {
       height: height,
       width: width,
       child: TextField(
-        controller: emailController,
+        controller: controller,
         decoration: InputDecoration(
         border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(10.0),

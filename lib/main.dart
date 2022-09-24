@@ -1,6 +1,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_project/screens/authentication/verify_email_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'screens/screens.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
               child: Text("something went wrong"),
             );
           }else if(snapshot.hasData){
-            return const HomePage();
+            return  VerifyEmailPage();
           }else{
             return Login();
           }
