@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_project/screens/screens.dart';
+import 'package:firebase_project/screens/tab_bar_view/nav_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -34,15 +35,15 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     }on FirebaseAuthException catch (e){
       Fluttertoast.showToast(msg: e.message.toString());
     }
-
-
   }
 
   Future checkEmailVerified() async{
     await FirebaseAuth.instance.currentUser!.reload();
-    setState(() {
+    if(mounted){
+      setState(() {
       isVerified = FirebaseAuth.instance.currentUser!.emailVerified;
     });
+    }
     if(isVerified) timer?.cancel();
   }
 
@@ -54,7 +55,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
 
   @override
   Widget build(BuildContext context) => isVerified ?
-    const HomePage() :
+    NavScreen() :
      Scaffold(
       backgroundColor: const Color.fromARGB(137, 72, 72, 72),
       body: Center(

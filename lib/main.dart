@@ -2,6 +2,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_project/screens/authentication/verify_email_page.dart';
+import 'package:firebase_project/screens/tab_bar_view/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'screens/screens.dart';
@@ -24,24 +25,25 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lime,
       ),
-      home: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if(snapshot.connectionState == ConnectionState.waiting){
-            return const Center(
-              child: CircularProgressIndicator()
-            );
-          }else if(snapshot.hasError){
-            return const Center(
-              child: Text("something went wrong"),
-            );
-          }else if(snapshot.hasData){
-            return  VerifyEmailPage();
-          }else{
-            return Login();
-          }
-        }
-      ),
+      home: ProfileScreen(),
+      // home: StreamBuilder<User?>(
+      //   stream: FirebaseAuth.instance.authStateChanges(),
+      //   builder: (context, snapshot) {
+      //     if(snapshot.connectionState == ConnectionState.waiting){
+      //       return const Center(
+      //         child: CircularProgressIndicator()
+      //       );
+      //     }else if(snapshot.hasError){
+      //       return const Center(
+      //         child: Text("something went wrong"),
+      //       );
+      //     }else if(snapshot.hasData){
+      //       return  VerifyEmailPage();
+      //     }else{
+      //       return Login();
+      //     }
+      //   }
+      // ),
     );
   }
 }

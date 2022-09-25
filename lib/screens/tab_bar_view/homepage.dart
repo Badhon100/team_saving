@@ -10,18 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: ()async{
-            try{
-              await FirebaseAuth.instance.signOut();
-            }on FirebaseAuthException catch (e){
-              Fluttertoast.showToast(msg: e.message.toString());
-            }
-          },
-          child: const Text("Logout", style: TextStyle(color: Colors.black),),
-        ),
-      ),
+      appBar: AppBar(),
     );
   }
 }
